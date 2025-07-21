@@ -16,7 +16,6 @@ import { CoinbaseABI } from "./coinbase.abi";
 
 // Example usage
 async function main() {
-  const tokenAddress = getAddress("0x1e3e1f2f400e72ae9944f906177e39c252348fe4");
   const ownerAccount = privateKeyToAccount(OWNER_PRIVATE_KEY);
   const coinbaseAccount = getAddress(COINBASE_ACCOUNT_ADDRESS);
 
@@ -42,7 +41,7 @@ async function main() {
       address: coinbaseAccount,
       abi: CoinbaseABI,
       functionName: "execute",
-      args: [tokenAddress, balance, '0x'],
+      args: [ownerAccount.address, balance, '0x'],
     });
     console.log("Transaction sent:", tx);
   } catch (error) {
